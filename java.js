@@ -2,6 +2,7 @@
 const availableFreelancers = [
     {name: "Alice", price: 30, occupation: "writer"},
     {name: "Robert", price: 40, occupation: "programer"},
+    {name: "Cody", price: 45, occupation: "accountant"},
 ]
 // create array for freelancers to be added 
 const freelancersAdd = [
@@ -83,3 +84,47 @@ const freelancersAdd = [
 availableFreelancers.forEach((freelancer) => {
     createCard(freelancer);
   });
+
+//create a function to add new objects into original array 
+function addFreelancer() {
+  // generate random number
+  const randomFreelancer = Math.floor(Math.random() * availableFreelancers.length);
+  // find a random item in the list
+  const item = freelancersAdd[randomFreelancer];
+  // remove item from availableDrinks
+  const index = freelancersAdd.indexOf(item);
+  // remove the item from the list using the index
+  freelancersAdd.splice(index, 1)
+
+  // append state
+  availableFreelancers.push(item);
+
+  // check length of drinkState
+  if(availableFreelancers.length >= 7) {
+      clearInterval(interval);
+  }
+  createCard(item)
+
+  const average =
+  availableFreelancers.reduce((acc, item) => acc + item.price, 0) / availableFreelancers.length;
+
+ avarageHead.textContent =  (`The average starting price is: ${Math.floor(average)}`);
+}
+
+// cretate a timer to add frelancers to the list every 5 seconds
+interval = setInterval(addFreelancer, 5000); 
+
+console.log(availableFreelancers);
+
+//create a heading for avarage price
+const avarage= document.querySelector('div')
+const avarageHead = document.createElement('h1');
+avarage.appendChild(avarageHead);
+
+
+//cretae avarage price of free lancers
+const average =
+  availableFreelancers.reduce((acc, item) => acc + item.price, 0) / availableFreelancers.length;
+
+ avarageHead.textContent =  (`The average starting price is: ${Math.floor(average)}`);
+

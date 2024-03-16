@@ -1,0 +1,7 @@
+.card {
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
